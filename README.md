@@ -2,23 +2,19 @@
 
 ### Morning
 
-- [Fruits Code Along][1]
+- [Library Code Along][1]
 
 
 
 ### Afternoon
 
-- [Fruits Code Along][1]
-- [Django CRUD App Lab][2]
-
+- [Project Introductions](http:..)
 
 
 
 ### Homework
 
 
-
 [1]: ./class-code/library-code-along/
-[2]: ./Django-CRUD-Lab/
 
 ---
