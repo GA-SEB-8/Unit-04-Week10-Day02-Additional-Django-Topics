@@ -2,7 +2,7 @@
 
 ### Morning
 
-- [Library Code Along][1]
+- [Additial Adjango Concepts Code Along][1]
 
 
 
