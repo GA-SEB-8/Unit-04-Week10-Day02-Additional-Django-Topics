@@ -1,4 +1,4 @@
-## Week 7 Day 2 (Tue 25)
+## Week 10 Day 2 (Mon 31)
 
 ### Morning
 
@@ -8,11 +8,8 @@
 
 ### Afternoon
 
-- [Project Introductions](http:..)
+- [Project Introductions](https://github.com/GA-SEB-8/Unit-04-Capstone-Project)
 
-
-
-### Homework
 
 
 [1]: ./class-code/library-code-along/
