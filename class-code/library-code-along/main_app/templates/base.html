@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head><meta charset="utf-8"><title>Authors</title></head>
+  <body>
+    <nav>
+      {% if user.is_authenticated%}
+      Welcome, {{user.username}} | 
+      <a href="{% url 'book_create' %}">Create Book</a> |
+      <a href="{% url 'author_create' %}">New Author</a> |
+      <form action="/auth/logout/" method="post">
+        {% csrf_token %}
+        <button>Logout</button>
+      </form>
+
+      {% else %}
+
+      {% endif %}
+      <a href="{% url 'author_list' %}">Authors</a> |
+      <a href="{% url 'book_list' %}">All Books</a> |
+
+
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+  </body>
+</html>
