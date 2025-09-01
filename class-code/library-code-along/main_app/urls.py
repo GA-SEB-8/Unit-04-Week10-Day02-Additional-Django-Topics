@@ -25,7 +25,9 @@ urlpatterns = [
     path("books/<int:book_id>/update/",views.BookUpdateView.as_view(), name='book_create'),
     path("books/<int:book_id>/",views.BookDetailView.as_view(), name='book_detail'),
     path("books/<int:pk>/delete/",views.BookDeleteView.as_view(), name='book_delete'),
-    path("auth/signup",views.SignUpView.as_view(), name="signup")
+    path("auth/signup",views.SignUpView.as_view(), name="signup"),
+    path("call-api",views.call_api, name="call_api")
+
 
 
 

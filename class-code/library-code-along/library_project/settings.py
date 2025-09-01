@@ -132,3 +132,7 @@ LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "author_list"       # Page where we get redirected with successful login
 LOGOUT_REDIRECT_URL = "login"     # Page where we get redirected when we log out
 
+
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"

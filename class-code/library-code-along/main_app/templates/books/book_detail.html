@@ -6,6 +6,7 @@
 
         <h2>Title: {{book.title}}</h2>
         <p>published: {{book.published_year}}</p>
+        <img src="{{book.cover_image.url}}" alt="">
 
         <form action="{% url 'book_delete' book.id%}" method='post'>
             {% csrf_token %}

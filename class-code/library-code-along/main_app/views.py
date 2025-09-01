@@ -187,4 +187,7 @@ class SignUpView(CreateView):
 
 
 def call_api(request):
-    res = requests.get
+    res = requests.get("https://omar-ga-class.onrender.com/students")
+    post_response = requests.post("https://omar-ga-class.onrender.com/students",{"name":"NEW STUDENT!!!!!!"})
+    print(res.json()[0]['course'])
+    return render(request,'registration/sign-up.html')

@@ -25,6 +25,8 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='books')
     # Author.objects.books_written()
 
+    cover_image = models.ImageField(upload_to='book_covers/', null=True)
+
     class Meta:
         db_table = 'books'
     
