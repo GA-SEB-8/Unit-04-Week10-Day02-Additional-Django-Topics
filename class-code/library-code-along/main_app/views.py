@@ -54,10 +54,14 @@ from .models import Author, Book
 from .forms import AuthorForm, BookForm
 
 
-class AuthorListView(ListView):
+class AuthorListView(LoginRequiredMixin,ListView):
     model = Author
     template_name = "authors/author_list.html"
     context_object_name = "authors"
+
+
+    def get_queryset(self):
+        return super().get_queryset()
 
 
 class AuthorDetailView(DetailView):
@@ -65,12 +69,6 @@ class AuthorDetailView(DetailView):
     template_name = "authors/author_detail.html"
     context_object_name = "author"
 
-
-    def get_context_data(self, **kwargs):
-        ctx = super().get_context_data(**kwargs)
-        # ctx['books'] = Book.objects.filter(author)
-
-        return 
 
 
 class AuthorCreateView(CreateView):

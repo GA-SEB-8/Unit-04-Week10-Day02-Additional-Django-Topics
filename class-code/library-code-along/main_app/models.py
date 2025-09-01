@@ -18,6 +18,7 @@ class Author(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
+
 class Book(models.Model):
     title = models.CharField(max_length=150)
     published_year = models.PositiveIntegerField(null=True)
