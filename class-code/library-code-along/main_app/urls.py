@@ -26,8 +26,11 @@ urlpatterns = [
     path("books/<int:book_id>/",views.BookDetailView.as_view(), name='book_detail'),
     path("books/<int:pk>/delete/",views.BookDeleteView.as_view(), name='book_delete'),
     path("auth/signup",views.SignUpView.as_view(), name="signup"),
-    path("call-api",views.call_api, name="call_api")
+    path("call-api",views.call_api, name="call_api"),
 
+
+    # favorite or unfavorite book
+    path('books/<int:pk>/favorite', views.toggle_book_fav.as_view(), name='toggle_favorite')
 
 
 

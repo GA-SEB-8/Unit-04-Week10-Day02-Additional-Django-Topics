@@ -117,7 +117,7 @@ class BookListView(ListView):
     context_object_name = 'books'
 
 
-class BookUpdateView(UserPassesTestMixin,UpdateView):
+class BookUpdateView(LoginRequiredMixin,UpdateView):
     model = Book
     template_name = 'books/book-form.html'
     form_class = BookForm
@@ -130,6 +130,14 @@ class BookDetailView(DetailView):
     template_name = 'books/book_detail.html'
     context_object_name = 'book'
     pk_url_kwarg = 'book_id' #change the dynamic url in the urls.py
+
+
+# Gets the favorites for the user for this book if he did favorite it
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        user = self.request.user
+        ctx['did_favorite'] = BookFavorite.objects.filter(user = user, book = self.object).exists()
+        return ctx
 
 
 class BookDeleteView(DeleteView):
@@ -177,7 +185,7 @@ def book_create(request):
 from django.contrib.auth.models import User # this is the user model we use to log in
 from django.contrib.auth.forms import UserCreationForm
 import requests
-
+from .models import BookFavorite
 class SignUpView(CreateView):
     model = User
     form_class = UserCreationForm
@@ -190,4 +198,21 @@ def call_api(request):
     res = requests.get("https://omar-ga-class.onrender.com/students")
     post_response = requests.post("https://omar-ga-class.onrender.com/students",{"name":"NEW STUDENT!!!!!!"})
     print(res.json()[0]['course'])
+
+    BookFavorite.objects.filter(user=request.user)
     return render(request,'registration/sign-up.html')
+
+
+
+
+# Adding a book to the favorites
+
+class toggle_book_fav(LoginRequiredMixin,View):
+    def post(self, request,pk):
+        book = Book.objects.get(pk=pk)
+        fav, created = BookFavorite.objects.get_or_create(user = request.user, book=book)
+        if not created:
+            fav.delete()
+        return redirect('book_detail', book_id=book.pk)
+    
+

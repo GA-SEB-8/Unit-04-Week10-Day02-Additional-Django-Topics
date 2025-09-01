@@ -12,5 +12,17 @@
             {% csrf_token %}
             <button>Delete Book</button>
         </form>
+
+
+          <form method="post" action="{% url 'toggle_favorite' book.pk %}">
+            {% csrf_token %}
+            <button type="submit">
+            {% if did_favorite %}
+                ★ Unfavorite
+            {% else %}
+                ☆ Favorite
+            {% endif %}
+            </button>
+        </form>
     {% endblock  %}
 

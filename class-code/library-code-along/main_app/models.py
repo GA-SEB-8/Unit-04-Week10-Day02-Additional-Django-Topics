@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 # Create your models here.
+from django.contrib.auth.models import User # Django Default User
 
 
 
@@ -33,3 +34,13 @@ class Book(models.Model):
     def __str__(self):
         return self.title
     
+
+
+
+class BookFavorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='fav')
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='fav_books')
+
+
+    def __str__(self):
+        return f"{self.user} → {self.book}"
