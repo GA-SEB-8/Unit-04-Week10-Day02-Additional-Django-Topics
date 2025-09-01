@@ -4,12 +4,6 @@ from django.contrib.auth.models import AbstractUser
 
 
 
-class CustomUser(AbstractUser):
-
-    role = models.CharField(max_length=20)
-    
-    class Meta:
-        db_table = "users"
 
 class Author(models.Model):
     first_name = models.CharField(max_length=80)

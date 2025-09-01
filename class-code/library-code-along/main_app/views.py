@@ -124,9 +124,6 @@ class BookUpdateView(UserPassesTestMixin,UpdateView):
     success_url = "/books/"
     pk_url_kwarg = 'book_id' #change the dynamic url in the urls.py
 
-    def test_func(self):
-        return self.request.user.role == "Admin" or "superuser"
-
 
 class BookDetailView(DetailView):
     model = Book
@@ -179,6 +176,7 @@ def book_create(request):
 
 from django.contrib.auth.models import User # this is the user model we use to log in
 from django.contrib.auth.forms import UserCreationForm
+import requests
 
 class SignUpView(CreateView):
     model = User
@@ -186,3 +184,7 @@ class SignUpView(CreateView):
     success_url = reverse_lazy("login")
     template_name = 'registration/sign-up.html'
     
+
+
+def call_api(request):
+    res = requests.get
